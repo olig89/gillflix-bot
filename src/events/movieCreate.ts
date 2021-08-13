@@ -66,7 +66,10 @@ export async function run(client: BotClient, data: WebhookData) {
     .setDescription(movie.description || '')
     .setImage(movie.image || '')
     .addFields(
-      { name: 'Tagline', value: `\`${movie.tagLine}\`` || '' },
+      {
+        name: 'Tagline',
+        value: `\`${movie.tagLine ? movie.tagLine : 'No tagline'}\`` || '',
+      },
       {
         name: 'Genres',
         value: `\`${genres}\``,
@@ -128,20 +131,12 @@ export async function run(client: BotClient, data: WebhookData) {
   const reviewMessage = await channel.send({ embeds: [reviewEmbed] });
   await reviewMessage.startThread({
     name: `reviews`,
-    autoArchiveDuration: server.features.includes('SEVEN_DAY_THREAD_ARCHIVE')
-      ? 10080
-      : server.features.includes('THREE_DAY_THREAD_ARCHIVE')
-      ? 4320
-      : 1440,
+    autoArchiveDuration: 'MAX',
     reason: `Adding review thread to ${movieName} channel`,
   });
   await channel.threads.create({
     name: `discussion`,
-    autoArchiveDuration: server.features.includes('SEVEN_DAY_THREAD_ARCHIVE')
-      ? 10080
-      : server.features.includes('THREE_DAY_THREAD_ARCHIVE')
-      ? 4320
-      : 1440,
+    autoArchiveDuration: 'MAX',
     reason: `Adding discussion thread to ${movieName} Channel`,
   });
 }
