@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "npx node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx node ."
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +26,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mathjs": "^9.4.4",
-    "millify": "^4.0.0"
+    "millify": "^4.0.0",
+    "node": "^16.6.1"
   }
 }
