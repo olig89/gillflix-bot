@@ -3,7 +3,6 @@ import { Intents } from 'discord.js';
 import type { ClientEvents } from 'discord.js';
 import { readdirSync } from 'fs';
 import path from 'path';
-import { version } from '../config.json';
 import chalk from 'chalk';
 require('dotenv').config();
 
@@ -19,8 +18,8 @@ export function main() {
     presence: {
       activities: [
         {
-          name: `version ${version}`,
-          type: 'STREAMING',
+          name: `with your heart strings`,
+          type: 'PLAYING',
         },
       ],
     },
