@@ -1,7 +1,9 @@
+import type { SlashCommandBuilder } from '@discordjs/builders';
 import { Collection } from 'discord.js';
 import { readdirSync } from 'fs';
 import type { Client, Message, PermissionString } from 'discord.js';
 import path from 'path';
+import type BotClient from './client';
 
 type CommandCategory = 'Utility';
 
@@ -22,6 +24,7 @@ export interface CommandData {
 export interface BotCommand {
   help: HelpObj;
   memberPerms: PermissionString[];
+  data: SlashCommandBuilder;
   permissions: PermissionString[];
   run: (
     client: Client,
@@ -33,9 +36,10 @@ export interface BotCommand {
 
 export default class CommandHandler extends Collection<string, BotCommand> {
   commandArray: { name: string; description: string }[][];
-  public constructor() {
+  client: BotClient;
+  public constructor(bot: BotClient) {
     super();
-
+    this.client = bot;
     this.rawCategories = readdirSync(path.resolve(__dirname, '../commands/'));
     this.commandArray = this.rawCategories.map((c) =>
       readdirSync(path.resolve(__dirname, `../commands/${c}`)).map((cmd) => {
