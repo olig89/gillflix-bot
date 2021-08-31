@@ -8,7 +8,6 @@ import type {
 } from './../types/movie-types';
 import type BotClient from '../structures/client';
 import config from '../../config.json';
-import millify from 'millify';
 
 export async function run(client: BotClient, data: WebhookData) {
   const { movie, user, review } = data;
