@@ -25,11 +25,11 @@ export async function run(client: BotClient, data: WebhookData) {
     )
     .setTimestamp()
     .setFields(
-      { name: 'Group Score', value: `\`${movie.rating}\``, inline: true },
+      { name: 'Gillflix Score', value: `\`${movie.rating}\``, inline: true },
       { name: 'Total Reviews', value: `\`${movie.numReviews}\``, inline: true },
       {
-        name: 'World wide',
-        value: `\`${movie.voteAverage} - ${millify(movie.voteCount)} votes\``,
+        name: 'TheMovieDb Score',
+        value: `\`${movie.voteAverage}\``,
         inline: true,
       }
     );
@@ -121,15 +121,15 @@ export async function editReviewEmbed(
     .setDescription(`${user.username} added a review ${time(new Date(), 'R')}`)
     .setTimestamp()
     .setFields(
-      { name: 'Group Score', value: `\`${movie.rating}\``, inline: true },
+      { name: 'Gillflix Score', value: `\`${movie.rating}\``, inline: true },
       {
         name: 'Total Reviews',
         value: `\`${movie.numReviews}\``,
         inline: true,
       },
       {
-        name: 'World wide',
-        value: `\`${movie.voteAverage} - ${millify(movie.voteCount)} votes\``,
+        name: 'TheMovieDb Score',
+        value: `\`${movie.voteAverage}\``,
         inline: true,
       }
     );
