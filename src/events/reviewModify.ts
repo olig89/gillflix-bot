@@ -3,7 +3,6 @@ import { MessageEmbed, TextChannel } from 'discord.js';
 import type BotClient from '../structures/client';
 import config from '../../config.json';
 import { editReviewEmbed } from './reviewCreate';
-import millify from 'millify';
 
 export async function run(client: BotClient, data: WebhookData) {
   const { user, movie, review } = data;
